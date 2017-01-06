@@ -1,0 +1,10 @@
+{
+  "mongodb": "mongodb://127.0.0.1/test",
+  "port": 3001,
+  "seneca": {
+    "exampleEndpoint": {
+      "port": 10100,
+      "host": "127.0.0.1"
+    }
+  }
+}
