@@ -6,6 +6,8 @@ const seneca = require('seneca');
 const nconf = require('nconf');
 nconf.argv().env();
 const env = process.env.NODE_ENV || 'development';
+const Xlog = require('xyj-logger');
+const logger = Xlog.Logger('logs'); //此处可传自定义字符串代替__filename
 nconf.file({file: 'config.' + env + '.json'});
 require('./mongoose');
 
@@ -13,7 +15,8 @@ const exampleLib = require('./register/example');
 
 function log () {
   this.sub('role:customer, cmd:*', (msg) => {
-    // TODO 调用log模块
+    let needMsg = { role: msg.role, cmd: msg.cmd, data: msg.data }
+    logger.debug(needMsg);
   });
 }
 
